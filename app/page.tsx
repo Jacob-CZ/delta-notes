@@ -1,4 +1,4 @@
-"use client"
+import TestEmbed from "@/components/testEmbed"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 
@@ -19,6 +19,7 @@ export default function Page() {
 			<Link href="/4" className={LinkClassName}>
 				<Button className={ButtonClassName}>4.Rocnik</Button>
 			</Link>
+			<TestEmbed />
 		</div>
 	)
 }
