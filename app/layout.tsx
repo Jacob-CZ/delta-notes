@@ -18,7 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className + " dark pt-16"}><Nav/><Login/>{children}</body>
+      <body className={inter.className + " dark pt-16 -z-20 relative"}><Nav/><Login/>{children}</body>
     </html>
   );
 }

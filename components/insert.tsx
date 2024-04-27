@@ -35,7 +35,7 @@ export default function Insert(props: { className: string }) {
 				+
 			</Button>
 			{insert && (
-				<div className=" fixed w-screen h-screen backdrop-blur-md top-0 left-0 flex items-center justify-center">
+				<div className=" fixed w-screen h-screen backdrop-blur-md top-0 left-0 flex items-center justify-center z-50">
 					<div className="p-8 border-4 border-neutral-800 rounded-3xl flex flex-col gap-2">
 						<Input
 							placeholder="Name"

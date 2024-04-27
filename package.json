@@ -15,11 +15,13 @@
     "@supabase/supabase-js": "^2.42.7",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
+    "file-saver": "^2.0.5",
     "input-otp": "^1.2.4",
     "jszip": "^3.10.1",
     "marked": "^12.0.2",
     "next": "14.2.3",
     "openai": "^4.38.5",
+    "pdfjs-dist": "^4.1.392",
     "pspdfkit": "^2024.3.0",
     "react": "^18",
     "react-dom": "^18",
@@ -27,6 +29,7 @@
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
+    "@types/file-saver": "^2.0.7",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
