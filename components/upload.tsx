@@ -67,7 +67,7 @@ async function pptxToJSON(blob: Blob): Promise<any> {
 				.then(function (zip) {
 					const slides: any[] = []
 					let slidesProcessed = 0
-					zip.folder("ppt/slides").forEach(function (
+					zip.folder("ppt/slides")?.forEach(function (
 						relativePath,
 						file
 					) {
