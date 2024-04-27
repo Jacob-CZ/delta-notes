@@ -90,17 +90,16 @@ export default async function Page({
 				</div>
 			)}
 			{file && (
-				<div className="relative w-full flex items-center justify-center">
+				<div className="relative w-full flex items-center justify-center flex-col gap-4 p-2">
 					
 					<Download file={{...file}}/>
-					{file.name.includes(".pptx") && <PptViewer document={file} className=""/>}
+					{file.name.includes(".pptx") && <PptViewer file={file}/>}
 					{file.name.includes(".pdf") && <PdfViewer file={file} />}
 					{file.name.includes(".docx") && <DocxViewer file={file} />}
 					{file.name.includes(".md") && <MdViewer file={file} />}
 					{file.name.includes(".txt") && <TxtViewer file={file} />}
 				</div>
 			)}
-			<div className="h-[500vh]"></div>
 		</div>
 	)
 }

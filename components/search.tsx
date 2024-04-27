@@ -34,7 +34,7 @@ export default function Search() {
 				onFocus={() => setBlur(false)}
 			/>
 			{!blur && (
-				<div className="absolute w-96 h-96 bg-black rounded-3xl border-4 top-full m-4 flex flex-col p-2">
+				<div className="absolute w-96 h-96 bg-black rounded-3xl border-4 top-full m-4 flex flex-col p-2 overflow-auto">
 					{results.map((result: any) => (
 						<div key={result.id} className="flex flex-col gap-2">
 							<h1 className="text-xl">{result.title}</h1>

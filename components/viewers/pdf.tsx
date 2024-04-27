@@ -1,7 +1,7 @@
 export default function PdfViewer(props: { file: { id: string, name: string } }) {
     return (
-        <div>
-            <iframe src={`https://bfrsylkdtzqnomqfneod.supabase.co/storage/v1/object/public/files/${props.file.id}`} className="w-full h-screen"></iframe>
+        <div className="w-full h-[80vh]">
+            <iframe src={`https://bfrsylkdtzqnomqfneod.supabase.co/storage/v1/object/public/files/${props.file.id}`} className="w-full h-full"></iframe>
         </div>
     )
 }
