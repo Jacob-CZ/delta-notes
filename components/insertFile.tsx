@@ -200,15 +200,15 @@ async function pdfToJSON(blob: Blob): Promise<any> {
             const pdfjsLib = require("pdfjs-dist")
             pdfjsLib.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.js`
             pdfjsLib.getDocument(new Uint8Array(pdfData)).promise.then(
-                function (pdf) {
+                function (pdf:any) {
                     const slides: any[] = []
                     const numPages = pdf.numPages
                     let slidesProcessed = 0
                     for (let i = 1; i <= numPages; i++) {
-                        pdf.getPage(i).then(function (page) {
-                            page.getTextContent().then(function (content) {
+                        pdf.getPage(i).then(function (page:any) {
+                            page.getTextContent().then(function (content:any) {
                                 const text = content.items
-                                    .map((item) => item.str)
+                                    .map((item:any) => item.str)
                                     .join(" ")
                                 slides.push({
                                     title: "",
