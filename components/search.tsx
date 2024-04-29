@@ -20,6 +20,9 @@ export default function Search() {
 		}
 	}
 	const search = async () => {
+		if (text === "") {
+			return
+		}
 		switch (ai) {
 			case true:
 				searchAI()
