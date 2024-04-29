@@ -140,6 +140,9 @@ export default function Login() {
 						)}
 						{otp && (
 							<>
+							<p className="w-full text-center">
+								Enter the OTP sent to your email (most likeli in spam)
+							</p>
 							<InputOTP maxLength={6} onChange={(value) => handleOtp(value)}>
 								<InputOTPGroup>
 									<InputOTPSlot index={0} />

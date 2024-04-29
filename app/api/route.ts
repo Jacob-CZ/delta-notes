@@ -19,7 +19,7 @@ export async function POST(req: NextRequest) {
 		}
 		const vector = await createVector(line)
 		const { data, error } = await supabase.from("documents").insert({
-			content: title + ' ' +line,
+			content: slide.title || " " + ' ' +line,
 			embedding: vector,
 			title: slide.title || title,
 			document_id: id,
@@ -42,12 +42,12 @@ export async function GET(req: NextRequest) {
 	}
 	const vector = await createVector(params!)
 	console.log(vector)
-	const { data: documents, error } = await supabase.rpc("match_documents", {
-		query_embedding: vector, // pass the query embedding
-		match_threshold: 0.2, // choose an appropriate threshold for your data
-		match_count: 5, // choose the number of matches
+	const { data: documents, error } = await supabase.rpc("hybrid_search", {
+		query_text: params,
+		query_embedding: vector, 
+		match_count: 5
 	})
-	console.log(documents)
+	console.log(error)
 	return NextResponse.json(
 		{ message: "success", data: documents },
 		{ status: 200 }

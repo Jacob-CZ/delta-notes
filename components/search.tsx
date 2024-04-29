@@ -1,11 +1,23 @@
 "use client"
 import { useState } from "react"
 import { Input } from "./ui/input"
+import Link from "next/link"
+import AISwitch from "./ai_switch"
 
 export default function Search() {
 	const [text, setText] = useState("")
 	const [results, setResults] = useState([])
-	const [blur, setBlur] = useState(true)
+	const [blur, setBblur] = useState(true)
+	const [ai, setAi] = useState(true)
+	const setBlur = (value: boolean) => {
+		if (value) {
+			setTimeout(() => {
+				setBblur(value)
+			}, 200)
+		} else {
+			setBblur(value)
+		}
+	}
 	const search = async () => {
 		if (!text || text.length < 5) return
 		const res = await fetch(`/api?text=${text}`, {
@@ -19,9 +31,14 @@ export default function Search() {
 		setResults(data.data)
 	}
 	return (
-		<div className="relative z-50">
+		<div
+			className="relative z-50 flex items-center gap-2 -mr-12"
+			onBlur={() => setBlur(true)}
+			onFocus={() => setBlur(false)}
+		>
+
 			<Input
-				className="m-4 w-96"
+				className="w-96"
 				type="text"
 				placeholder="Search"
 				onChange={(e) => {
@@ -30,16 +47,23 @@ export default function Search() {
 						search()
 					}, 200)
 				}}
-				onBlur={() => setBlur(true)}
-				onFocus={() => setBlur(false)}
 			/>
+				<AISwitch onToggle={(value) => setAi(value)}  className="self-center"/>
+
+			<div className="absolute top-14 left-40">
+			</div>
 			{!blur && (
 				<div className="absolute w-96 h-96 bg-black rounded-3xl border-4 top-full m-4 flex flex-col p-2 overflow-auto">
 					{results.map((result: any) => (
-						<div key={result.id} className="flex flex-col gap-2">
-							<h1 className="text-xl">{result.title}</h1>
-							<p>{result.content}</p>
-						</div>
+						<a
+							key={result.id}
+							href={"/file?file=" + result.document_id}
+						>
+							<div className="flex flex-col gap-2">
+								<h1 className="text-xl">{result.title}</h1>
+								<p>{result.content}</p>
+							</div>
+						</a>
 					))}
 				</div>
 			)}
